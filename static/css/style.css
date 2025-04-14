@@ -1,0 +1,642 @@
+body {
+  background-color: #ffffff !important;
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  color: #3B3B3B;
+  padding: 20px;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+.form-container {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+h1, h2 {
+  text-align: center;
+  color: #A9745C;
+}
+
+.section {
+  margin-bottom: 3em;
+}
+
+iframe {
+  width: 100%;
+  border: none;
+}
+
+.hearing-form {
+  max-width: 600px;  /* ← ここ重要！ */
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.hearing-form h2.form-title {
+  /* h2であることを明示した指定 */
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.hearing-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.hearing-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #332E2C;
+}
+
+.hearing-form input[type="text"],
+.hearing-form input[type="email"],
+.hearing-form input[type="tel"],
+.hearing-form input[type="url"],
+.hearing-form textarea,
+.hearing-form select {
+  width: 100%;
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.hearing-form input[type="radio"],
+.hearing-form input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.hearing-form .submit-btn {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.hearing-form .submit-btn:hover {
+  background-color: #555;
+}
+
+/* ▼ スマホ向けレスポンシブ調整 ▼ */
+@media screen and (max-width: 480px) {
+  body {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
+
+  /* スマホ用（480px以下） */
+@media screen and (max-width: 480px) {
+  .section {
+    margin-bottom: 2em;
+  }
+}
+  iframe {
+    height: 300px !important;
+  }
+}
+/* ▼ ロゴ・フォント選択用スタイル ▼ */
+.image-select-group {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-option {
+  position: relative;
+  width: 140px;
+  max-width: 45%;
+  text-align: center;
+  cursor: pointer;
+}
+
+.image-option input[type="radio"] {
+  display: none;
+}
+
+.image-wrapper {
+  position: relative;
+  border: 2px solid #ddd;
+  border-radius: 16px;
+  padding: 8px;
+  transition: border-color 0.3s;
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1; /* 正方形に近づける */
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+
+.checkmark {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid #999;
+  background-color: white;
+  z-index: 2;
+}
+
+.image-option input[type="radio"] {
+  display: none !important;
+}
+
+.image-option input[type="radio"]:checked + .image-wrapper {
+  background-color: #FFF7F5;  /* ← 背景色をほんのり */
+  border-color: #EBD3CA;      /* ← 枠の色も優しく */
+}
+
+.image-option input[type="radio"]:checked + .image-wrapper .checkmark {
+  background-color: #EBD3CA;
+  border-color: #EBD3CA;
+}
+
+
+/* ▼ デザインキーワード ▼ */
+.design-keywords {
+  margin-top: 20px;
+}
+
+.design-keywords .label {
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.design-keywords .label span {
+  font-size: 0.85em;
+  color: #999;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 8px;
+}
+
+.checkbox-grid label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  height: 24px; 
+}
+/* ▼ イメージカラー（レスポンシブ対応） ▼ */
+.color-checkbox-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.color-checkbox {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: #fafafa;
+  transition: border 0.3s;
+}
+
+/* ホバー時 */
+.color-checkbox:hover {
+  border-color: #EBD3CA;
+}
+
+/* チェックされたとき（ラップ全体に影響を与えるためinput:checkedで親要素を制御） */
+.color-checkbox input[type="checkbox"]:checked + label {
+  background-color: #FFF7F5;
+  border: 2px solid #EBD3CA;
+}
+
+/* チェックボックスの見た目をカスタマイズ */
+.color-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+  margin-right: 8px;
+}
+
+/* チェックされたときの見た目 */
+.color-checkbox input[type="checkbox"]:checked {
+  background-color: #EBD3CA;
+  border-color: #EBD3CA;
+}
+
+/* 白いチェックマーク */
+.color-checkbox input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top: -2px;
+  left: 3px;
+}
+
+.color-checkbox input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.color-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.color-sample {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.color-sample span {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+@media screen and (max-width: 480px) {
+  .image-option {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .checkbox-grid label,
+  .color-checkbox {
+    font-size: 13px;
+  }
+}
+
+.image-option p,  /* ロゴイメージの下のテキスト */
+.font-label {      /* フォント選択のラベル */
+  font-size: 13px;
+  line-height: 1.4;
+  word-break: keep-all;       /* 不自然な場所での折返し防止 */
+  white-space: normal;
+  text-align: center;
+  margin-top: 8px;
+  max-width: 120px;           /* 幅を制限して折り返し位置を制御 */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.checkbox-grid label {
+  display: flex;
+  align-items: center;  /* ←縦中央揃え */
+  gap: 6px;
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: nowrap; /* ← これがあるとテキストが折り返されない */
+  height: 24px;/* ← 高さ固定して見た目を揃える */
+  min-width: 120px; /* ← ここで強制的に幅確保 */
+}
+
+
+/* チェックされてない状態 */
+.checkbox-grid input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  min-width: 18px;  /* ←追加！幅を固定 */
+  min-height: 18px; /* ←追加！高さも固定 */
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  vertical-align: middle;
+  position: relative;
+  margin: 0;
+  margin-right: 6px;
+  box-sizing: border-box;
+  flex-shrink: 0; /* ←追加！縮ませない */
+}
+
+.checkbox-grid input[type="checkbox"]:checked {
+  background-color: #E8D3CA;
+  border-color: #FFF7F5;
+}
+.checkbox-grid input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  top: 1px;   /* ←調整ポイント */
+  left: 2px;  /* ←調整ポイント */
+  line-height: 1;
+}
+
+
+
+
+/* ▼ カラー選択ボックス（初期） ▼ */
+.color-checkbox {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+  background-color: #fafafa;
+  transition: all 0.3s;
+  display: block;
+  position: relative;
+  cursor: pointer;
+}
+
+/* ▼ チェックボックス自体の見た目 ▼ */
+.color-checkbox input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+  margin-right: 8px;
+  box-sizing: border-box;
+}
+
+/* ✔マーク表示（白） */
+.color-checkbox input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top: -2px;
+  left: 3px;
+}
+
+/* ▼ チェックされたとき、全体に背景＆枠をつける（Safari対応） ▼ */
+.color-checkbox:has(input[type="checkbox"]:checked) {
+  background-color: #FFF7F5;
+  border: 2px solid #EBD3CA;
+}
+
+input[type="checkbox"]{
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  background-color: #fff;
+  position: relative;
+  cursor: pointer;
+  margin-right: 6px;
+  box-sizing: border-box;
+}
+/* ラジオボタン：カスタムスタイル */
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 50%;
+  background-color: #fff;
+  position: relative;
+  margin: 0;
+  margin-right: 8px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+/* 選択された時に中をピンクで塗りつぶす */
+input[type="radio"]:checked {
+  border-color: #EBD3CA;        /* 枠の色（やさしいピンク） */
+  background-color: #EBD3CA;    /* 中も塗りつぶす */
+}
+
+
+/* チェック済みスタイル */
+input[type="checkbox"]:checked{
+  background-color: #E8D3CA;
+  border-color: #FFF7F5;
+}
+
+input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  top: 2px;
+  left: 4px;
+  line-height: 1;
+}
+
+.logo-usage input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  margin-right: 6px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.logo-usage input[type="checkbox"]:checked {
+  background-color: #EBD3CA;
+  border-color: #FFF7F5;
+}
+
+.logo-usage input[type="checkbox"]:checked::after {
+  content: "✔";
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  line-height: 1;
+}
+
+.logo-usage {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* ←これがキー！ */
+  gap: 10px 20px;
+}
+
+
+.logo-usage label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: nowrap;
+  min-width: 220px;  /* ←ここで折り返し防止＆幅調整してる */
+}
+.form-group > label.section-title {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 0.5em;
+  color: #332E2C;
+  line-height: 1.6;
+}
+.hidden {
+  display: none !important;
+}
+
+#logo-form, #card-form, #logo-card-form {
+  display: none;
+}
+.upload-area {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.upload-label {
+  display: block;
+  border: 2px dashed #EBD3CA;
+  background-color: #FFF7F5;
+  border-radius: 12px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.upload-label:hover {
+  background-color: #fceee9;
+}
+
+.upload-icon {
+  font-size: 2.5rem;
+  color: #E19C89;
+}
+
+.upload-text {
+  font-size: 1.2rem;
+  color: #3B3B3B;
+  margin-top: 0.5rem;
+}
+
+.upload-caption {
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+/* inputは非表示に */
+#upload-input {
+  display: none;
+}
+
+.upload-status {
+  margin-top: 0.5rem;
+  color: #2c7a7b;
+  font-weight: bold;
+}
+#upload-status img {
+  margin-top: 8px;
+}
+
+.back-button {
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background-color: #555;
+}
+
+/* サンクスページ専用 */
+.thanks-wrapper {
+  max-width: 600px;
+  margin: 120px auto;
+  text-align: center;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.thanks-wrapper h1 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.thanks-wrapper p {
+  font-size: 1.1rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+.thanks-wrapper .btn {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color 0.3s;
+}
+
+.thanks-wrapper .btn:hover {
+  background-color: #555;
+}
+
+.check-icon {
+  font-size: 3rem;
+  color: #4caf50;
+  margin-bottom: 1rem;
+}
+

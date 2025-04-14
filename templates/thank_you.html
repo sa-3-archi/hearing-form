@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>送信ありがとうございます</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #fffaf5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .thanks-wrapper {
+      max-width: 600px;
+      margin: 120px auto;
+      text-align: center;
+      padding: 2.5rem;
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .thanks-wrapper h1 {
+      font-size: 2rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .thanks-wrapper p {
+      font-size: 1.1rem;
+      color: #666;
+      line-height: 1.6;
+    }
+
+    .thanks-wrapper .btn {
+      display: inline-block;
+      margin-top: 2rem;
+      padding: 0.8rem 1.5rem;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    .thanks-wrapper .btn:hover {
+      background-color: #555;
+    }
+
+    .check-icon {
+      font-size: 3rem;
+      color: #4caf50;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="thanks-wrapper">
+    <div class="check-icon">✅</div>
+    <h1>ご送信ありがとうございます</h1>
+    <p>お送りいただいたヒアリング内容をもとに、<br>
+       ラフ案を作成させていただきます。</p>
+    
+    <p>ご不明な点やご要望があれば、お気軽にご連絡くださいませ。<br>
+        こちらから追加でご質問させていただく場合もございますので、<br>
+        その際はどうぞよろしくお願いいたします。</p>
+    <a href="https://true-az.com/" class="btn">トップページへ戻る</a>
+  </div>
+</body>
+</html>
