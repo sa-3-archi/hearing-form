@@ -5,6 +5,8 @@ import re
 import unicodedata
 from flask import Flask, render_template, request
 from email.message import EmailMessage
+from email.header import Header
+
 
 app = Flask(__name__)
 
@@ -106,7 +108,7 @@ def handle_logo_form():
         send_mail(
             subject="【ロゴヒアリング】新しい回答が届きました",
             sender_email="azumaprint@p-pigeon.com",
-            app_password="zhzt njjz lmby hunm",
+            app_password="zhzt njjz lmby hunm",
             recipient_email="az_bridal@p-pigeon.com",
             body=body
         )
@@ -180,7 +182,7 @@ def handle_card_form():
         send_mail(
             subject="【名刺ヒアリング】新しい回答が届きました",
             sender_email="azumaprint@p-pigeon.com",
-            app_password="zhzt njjz lmby hunm",
+            app_password="zhzt njjz lmby hunm",
             recipient_email="az_bridal@p-pigeon.com",
             body=body,
             attachments=attachments
@@ -288,7 +290,7 @@ def handle_logo_card_form():
         send_mail(
             subject="【ロゴ＋名刺ヒアリング】新しい回答が届きました",
             sender_email="azumaprint@p-pigeon.com",
-            app_password="zhzt njjz lmby hunm",
+            app_password="zhzt njjz lmby hunm",
             recipient_email="az_bridal@p-pigeon.com",
             body=body,
             attachments=attachments
@@ -304,7 +306,7 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
     body = unicodedata.normalize("NFKC", str(body)).replace(u'\u00A0', ' ')
 
     msg = EmailMessage()
-    msg['Subject'] = subject
+    msg['Subject'] = Header(subject, 'utf-8')  # ← ここ！！
     msg['From'] = sender_email
     msg['To'] = recipient_email
     msg.set_content(body, charset='utf-8')
