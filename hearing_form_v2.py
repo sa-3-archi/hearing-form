@@ -298,29 +298,12 @@ def handle_logo_card_form():
         return f"送信エラー: {e}"
 
 def send_mail(subject, sender_email, app_password, recipient_email, body, attachments=None):
-    """
-    メールを送信する関数
+    # すべての入力を安全に処理
+    subject = unicodedata.normalize("NFKC", str(subject)).replace('\xa0', ' ')
+    sender_email = str(sender_email)
+    recipient_email = str(recipient_email)
+    body = unicodedata.normalize("NFKC", str(body)).replace('\xa0', ' ')
     
-    :param subject: メールの件名
-    :param sender_email: 送信者のメールアドレス
-    :param app_password: "zhzt njjz lmby hunm"（Gmailなどで生成する）
-    :param recipient_email: 受信者のメールアドレス
-    :param body: メール本文
-    :param attachments: 添付ファイルのパスリスト（省略可）
-    """
-    
-
-    subject = unicodedata.normalize("NFKC", str(subject))
-    subject = subject.replace('\xa0', ' ')
-    body = unicodedata.normalize("NFKC", str(body))
-    body = body.replace('\xa0', ' ')
-    
-    # 🐞 ここにデバッグ入れる！
-    print("=== デバッグ情報 ===")
-    print(f"Subject型: {type(subject)}, 内容: {repr(subject)[:100]}")
-    print(f"From型: {type(sender_email)}, 内容: {repr(sender_email)}")
-    print(f"To型: {type(recipient_email)}, 内容: {repr(recipient_email)}")
-    print(f"Body型: {type(body)}, 内容の一部: {repr(body)[:100]}")
     msg = EmailMessage()
     msg['Subject'] = subject
     msg['From'] = sender_email
@@ -334,8 +317,8 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
                 with open(file_path, 'rb') as f:
                     file_data = f.read()
                     file_name = os.path.basename(file_path)
+                    file_name = unicodedata.normalize("NFKC", str(file_name)).replace('\xa0', ' ')
                     
-                    # 画像の種類を判定
                     img_type = imghdr.what(None, file_data)
                     if img_type:
                         maintype = 'image'
@@ -348,10 +331,16 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
             except Exception as e:
                 print(f"添付ファイルエラー: {e}")
     
-    # メール送信
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-        smtp.login(sender_email, app_password)
-        smtp.send_message(msg)
+    # 代替のメール送信方法を試す
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(sender_email, app_password)
+            # 文字列としてメッセージを生成し、エンコードを指定
+            message_str = msg.as_string()
+            smtp.sendmail(sender_email, recipient_email, message_str.encode('utf-8'))
+    except Exception as e:
+        print(f"メール送信エラー: {type(e).__name__}: {e}")
+        raise
 
 # ローカルサーバー起動
 if __name__ == '__main__':
