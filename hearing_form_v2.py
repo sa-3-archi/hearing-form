@@ -308,11 +308,19 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
     :param body: メール本文
     :param attachments: 添付ファイルのパスリスト（省略可）
     """
+    
+
     subject = unicodedata.normalize("NFKC", str(subject))
     subject = subject.replace('\xa0', ' ')
     body = unicodedata.normalize("NFKC", str(body))
     body = body.replace('\xa0', ' ')
     
+    # 🐞 ここにデバッグ入れる！
+    print("=== デバッグ情報 ===")
+    print(f"Subject型: {type(subject)}, 内容: {repr(subject)[:100]}")
+    print(f"From型: {type(sender_email)}, 内容: {repr(sender_email)}")
+    print(f"To型: {type(recipient_email)}, 内容: {repr(recipient_email)}")
+    print(f"Body型: {type(body)}, 内容の一部: {repr(body)[:100]}")
     msg = EmailMessage()
     msg['Subject'] = subject
     msg['From'] = sender_email
