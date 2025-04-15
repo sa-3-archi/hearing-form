@@ -312,7 +312,10 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
     msg['Subject'] = subject
     msg['From'] = sender_email
     msg['To'] = recipient_email
-    msg.set_content(body)
+    
+    body = unicodedata.normalize("NFKC", body)
+    body = re.sub(r'\xa0', ' ', body)  # ← NBSPを通常スペースに
+    msg.set_content(body, charset='utf-8')  # ← charsetを明示！
     
     # 添付ファイルの処理
     if attachments:
