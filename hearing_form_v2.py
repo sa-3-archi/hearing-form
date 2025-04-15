@@ -332,15 +332,14 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
                 print(f"添付ファイルエラー: {e}")
     
     # 代替のメール送信方法を試す
-    try:
-        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login(sender_email, app_password)
-            # 文字列としてメッセージを生成し、エンコードを指定
-            message_str = msg.as_string()
-            smtp.sendmail(sender_email, recipient_email, message_str.encode('utf-8'))
-    except Exception as e:
-        print(f"メール送信エラー: {type(e).__name__}: {e}")
-        raise
+    # 代替のメール送信方法を試す
+try:
+    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+        smtp.login(sender_email, app_password)
+        smtp.send_message(msg)  # ✅ これだけでOK！
+except Exception as e:
+    print(f"メール送信エラー: {type(e).__name__}: {e}")
+    raise
 
 # ローカルサーバー起動
 if __name__ == '__main__':
