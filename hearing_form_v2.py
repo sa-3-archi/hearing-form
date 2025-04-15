@@ -332,10 +332,14 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login(sender_email, app_password)
-            smtp.send_message(msg)
+
+            # メッセージを手動でエンコードして送信（安全）
+            raw_message = msg.as_string()
+            smtp.sendmail(sender_email, recipient_email, raw_message.encode('utf-8'))
     except Exception as e:
         print(f"メール送信エラー: {type(e).__name__}: {e}")
         raise
+
 
 
 # ローカルサーバー起動
