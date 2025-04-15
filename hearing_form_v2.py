@@ -298,19 +298,17 @@ def handle_logo_card_form():
         return f"送信エラー: {e}"
 
 def send_mail(subject, sender_email, app_password, recipient_email, body, attachments=None):
-    # すべての入力を安全に処理
     subject = unicodedata.normalize("NFKC", str(subject)).replace('\xa0', ' ')
     sender_email = str(sender_email)
     recipient_email = str(recipient_email)
     body = unicodedata.normalize("NFKC", str(body)).replace('\xa0', ' ')
-    
+
     msg = EmailMessage()
     msg['Subject'] = subject
     msg['From'] = sender_email
     msg['To'] = recipient_email
     msg.set_content(body, charset='utf-8')
-    
-    # 添付ファイルの処理
+
     if attachments:
         for file_path in attachments:
             try:
@@ -330,16 +328,15 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
                     msg.add_attachment(file_data, maintype=maintype, subtype=subtype, filename=file_name)
             except Exception as e:
                 print(f"添付ファイルエラー: {e}")
-    
-    # 代替のメール送信方法を試す
-    # 代替のメール送信方法を試す
-try:
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-        smtp.login(sender_email, app_password)
-        smtp.send_message(msg)  # ✅ これだけでOK！
-except Exception as e:
-    print(f"メール送信エラー: {type(e).__name__}: {e}")
-    raise
+
+    try:
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(sender_email, app_password)
+            smtp.send_message(msg)
+    except Exception as e:
+        print(f"メール送信エラー: {type(e).__name__}: {e}")
+        raise
+
 
 # ローカルサーバー起動
 if __name__ == '__main__':
