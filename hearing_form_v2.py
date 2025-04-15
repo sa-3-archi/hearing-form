@@ -298,16 +298,17 @@ def handle_logo_card_form():
         return f"送信エラー: {e}"
 
 def send_mail(subject, sender_email, app_password, recipient_email, body, attachments=None):
-    subject = unicodedata.normalize("NFKC", str(subject)).replace('\xa0', ' ')
+    subject = unicodedata.normalize("NFKC", str(subject)).replace(u'\u00A0', ' ')
     sender_email = str(sender_email)
     recipient_email = str(recipient_email)
-    body = unicodedata.normalize("NFKC", str(body)).replace('\xa0', ' ')
+    body = unicodedata.normalize("NFKC", str(body)).replace(u'\u00A0', ' ')
 
     msg = EmailMessage()
     msg['Subject'] = subject
     msg['From'] = sender_email
     msg['To'] = recipient_email
     msg.set_content(body, charset='utf-8')
+
 
     if attachments:
         for file_path in attachments:
@@ -332,10 +333,7 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login(sender_email, app_password)
-
-            # メッセージを手動でエンコードして送信（安全）
-            raw_message = msg.as_string()
-            smtp.sendmail(sender_email, recipient_email, raw_message.encode('utf-8'))
+            smtp.sendmail(sender_email, recipient_email, msg.as_string().encode('utf-8'))
     except Exception as e:
         print(f"メール送信エラー: {type(e).__name__}: {e}")
         raise
