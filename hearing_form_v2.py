@@ -308,14 +308,16 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
     :param body: メール本文
     :param attachments: 添付ファイルのパスリスト（省略可）
     """
+    subject = unicodedata.normalize("NFKC", str(subject))
+    subject = subject.replace('\xa0', ' ')
+    body = unicodedata.normalize("NFKC", str(body))
+    body = body.replace('\xa0', ' ')
+    
     msg = EmailMessage()
     msg['Subject'] = subject
     msg['From'] = sender_email
     msg['To'] = recipient_email
-    
-    body = unicodedata.normalize("NFKC", body)
-    body = body.replace('\xa0', ' ')  # ← NBSPを通常スペースに
-    msg.set_content(body, charset='utf-8')  # ← charsetを明示！
+    msg.set_content(body, charset='utf-8')
     
     # 添付ファイルの処理
     if attachments:
