@@ -6,6 +6,7 @@ import unicodedata
 from flask import Flask, render_template, request
 from email.message import EmailMessage
 from email.header import Header
+from email.utils import formataddr
 
 
 app = Flask(__name__)
@@ -306,8 +307,9 @@ def send_mail(subject, sender_email, app_password, recipient_email, body, attach
     body = unicodedata.normalize("NFKC", str(body)).replace(u'\u00A0', ' ')
 
     msg = EmailMessage()
-    msg['Subject'] = Header(subject, 'utf-8')  # ← ここ！！
-    msg['From'] = sender_email
+    msg['Subject'] = str(Header(subject, 'utf-8'))  # ← ここ！！
+    user_name = request.form.get("user_name", "お客様")
+    msg['From'] = formataddr((str(Header(user_name, "utf-8")), sender_email))
     msg['To'] = recipient_email
     msg.set_content(body, charset='utf-8')
 
