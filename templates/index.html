@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/globals.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
-　
+
 
 <body> 
   <div class="form-wrapper">
@@ -16,16 +16,16 @@
       <form class="hearing-form" method="POST" action="/submit" enctype="multipart/form-data">
         <input type="hidden" name="form_type" id="form_type">
 
-        　　　<!-- 基本情報ヒアリングシート -->
-        　　　<div class="section" id="basic-info-form">
-          　　　 
-            　　　 <input type="hidden" name="form_type" value="basic_info">
-            　　　　<h2 class="form-title">ヒヤリングシート（基本情報）</h2>
+              <!-- 基本情報ヒアリングシート -->
+              <div class="section" id="basic-info-form">
+          
+                  <input type="hidden" name="form_type" value="basic_info">
+                    <h2 class="form-title">ヒヤリングシート（基本情報）</h2>
 
-            　　　　<div class="form-group">
-              　　　　 <label for="user_name">【お名前】<span class="required">※</span></label>
-              　　　　　<input type="text" id="user_name" name="user_name" class="input" required>
-              　　　　　　</div>
+                      <div class="form-group">
+                        <label for="user_name">【お名前】<span class="required">※</span></label>
+                          <input type="text" id="user_name" name="user_name" class="input" required>
+                      </div>
 
             <div class="form-group">
               <label for="user_email">【メールアドレス】<span class="required">※</span></label>
@@ -58,24 +58,24 @@
               <button type="button" class="submit-btn" id="next-button">次へ</button>
             </div>
 
-            　　　　
+          
           
         </div>
     </div>
   </div>
 
 
-  　　
-  　　　<div class="section hearing-form" id="logo-form">
+  
+      <div class="section hearing-form" id="logo-form">
 
-    　　
-    　　　<input type="hidden" name="form_type" value="logo_only">
-    　　　　<h2 class="form-title">ロゴデザイン</h2>
+    
+        <input type="hidden" name="form_type" value="logo_only">
+          <h2 class="form-title">ロゴデザイン</h2>
 
-    　　　　　<div class="form-group">
-      　　　　　 <label class="section-title">主なターゲット層（客層）<span class="required">※</span></label>
-      　　　　　　 <input name="logo_target" placeholder="例：20代女性向けの美容サロン" required="" type="text"/>
-      　　　　　</div>
+            <div class="form-group">
+              <label class="section-title">主なターゲット層（客層）<span class="required">※</span></label>
+                 <input name="logo_target" placeholder="例：20代女性向けの美容サロン" required="" type="text"/>
+            </div>
 <div class="form-group">
 <label class="section-title">主なターゲットの年齢層<span class="required">※</span></label>
 <select name="logo_age_group" required="">
@@ -89,7 +89,7 @@
 <!-- 🎯 デザインキーワード（←ここが位置修正後） -->
 <div class="form-group">
 <div class="design-keywords">
-<label class="section-title">デザインキーワード <span>（複数可）※必須</span></label>
+<label class="section-title">デザインキーワード <span>（複数可）※</span></label>
 <div class="checkbox-grid">
 <label><input name="keywords" type="checkbox" value="可愛い・キュート"/>可愛い・キュート</label>
 <label><input name="keywords" type="checkbox" value="カジュアル"/>カジュアル</label>
@@ -240,7 +240,7 @@
 <textarea name="logo_meaning" required="" rows="3"></textarea>
 </div>
 <div class="form-group">
-<label class="form-subtitle">ロゴイメージ（※必須）</label>
+<label class="form-subtitle">ロゴイメージ<span class="required">※</span></label>
 <div class="image-select-group">
 <label class="image-option">
 <input name="logo_type" required="" type="radio" value="symbol"/>
@@ -282,7 +282,7 @@
 <label><input name="logo_direction" type="radio" value="readable"/> ぱっと見て文字が読めることを重視</label>
 </div>
 <div class="form-group">
-<label class="section-title">● ロゴの使用用途を教えてください（複数可）</label>
+<label class="section-title">● ロゴの使用用途を教えてください（複数可）<span class="required">※</span></label>
 <div class="logo-usage">
 <label><input name="usage" type="checkbox" value="Webサイト"/>Webサイト</label>
 <label><input name="usage" type="checkbox" value="紙媒体"/>名刺・封筒などの紙媒体</label>
@@ -295,7 +295,7 @@
 </div>
 <div class="form-group">
 <label class="section-title">ロゴの参考URL（あれば）</label>
-<textarea name="logo_reference_url" placeholder="例：https://true-az.com/　カラーを参考にしたい など" rows="2"></textarea>
+<textarea name="logo_reference_url" placeholder="例：https://true-az.com/ カラーを参考にしたい など" rows="2"></textarea>
 </div>
 <div class="form-group">
 <label class="section-title">重要視する色（任意）</label>
@@ -308,7 +308,7 @@
 <div class="form-group" style="text-align: center;">
 <button type="button" id="back-logo" class="back-button">戻る</button>
 <button type="submit" class="submit-btn" onclick="return setFormTypeAndSubmit('logo_only')">送信</button>
-      　
+      
     </div>
   
 </div>
@@ -356,6 +356,7 @@
 <textarea name="card_back" rows="3"></textarea>
 </div>
 <div class="upload-area">
+  <label class="section-title">既存のロゴがある場合</label>
   <label for="upload-input" class="upload-label">
     <div class="upload-icon">⬆</div>
     <div class="upload-text">画像をアップロード</div>
@@ -374,7 +375,7 @@
 </div>
 <!-- ✅ デザインキーワード（名刺用） -->
 <div class="design-keywords">
-<label class="section-title">デザインキーワード <span>（複数可）※必須</span></label>
+<label class="section-title">デザインキーワード <span class="required">※</span></label>
 <div class="checkbox-grid">
 <label><input name="keywords" type="checkbox" value="可愛い・キュート"/>可愛い・キュート</label>
 <label><input name="keywords" type="checkbox" value="カジュアル"/>カジュアル</label>
@@ -514,7 +515,7 @@
 <input name="important_color" placeholder="例：淡いピンクなど" type="text"/>
 </div>
 <div class="form-group">
-<label class="form-subtitle">ご希望のイメージフォント（※必須）</label>
+<label class="form-subtitle">ご希望のイメージフォント<span class="required">※</span></label>
 <div class="image-select-group">
 <label class="image-option">
 <input name="font" required="" type="radio" value="font1"/>
@@ -679,7 +680,7 @@
 <p>ロゴ・名刺共通の場合は1回でOKです。</p>
 <p>ロゴ・名刺で分けたい場合は下記にそれぞれご記入ください。</p>
 <div class="design-keywords">
-                　<div class="checkbox-grid">
+                  <div class="checkbox-grid">
 <label><input name="keywords" type="checkbox" value="可愛い・キュート"/>可愛い・キュート</label>
 <label><input name="keywords" type="checkbox" value="カジュアル"/>カジュアル</label>
 <label><input name="keywords" type="checkbox" value="ポップ"/>ポップ</label>
@@ -833,7 +834,7 @@
 <input name="priority_color" placeholder="例：淡いピンクなど" type="text"/>
 </div>
 <div class="form-group">
-<label class="form-subtitle">ロゴイメージ（※必須）</label>
+<label class="form-subtitle">ロゴイメージ<span class="required">※</span></label>
 <div class="image-select-group">
 <label class="image-option">
 <input name="logo_type" required="" type="radio" value="symbol"/>
@@ -863,7 +864,7 @@
 </div>
 <!-- フォント -->
 <div class="form-group">
-<label class="form-subtitle">ご希望のイメージフォント（※必須）</label>
+<label class="form-subtitle">ご希望のイメージフォント<span class="required">※</span></label>
 <div class="image-select-group">
 <label class="image-option">
 <input name="font" required="" type="radio" value="font1"/>

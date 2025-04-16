@@ -54,14 +54,45 @@ def get_basic_info():
     address = safe_get_form("address")
     phone = safe_get_form("phone")
 
-    return f"""■ お名前：{user_name}
-■ メールアドレス：{user_email}
-■ 会社名または屋号：{company}
-■ 住所：{address}
-■ 電話番号：{phone}
+    # 必須チェック（エラーがあればまとめて返す）
+    errors = []
+    if not user_name:
+        errors.append("お名前は必須です。")
+    if not user_email:
+        errors.append("メールアドレスは必須です。")
+    if not company:
+        errors.append("会社名または屋号は必須です。")
+    if not phone:
+        errors.append("電話番号は必須です。")
+
+    if errors:
+        return {"error": True, "messages": errors}
+
+    return {
+        "error": False,
+        "user_name": user_name,
+        "user_email": user_email,
+        "company": company,
+        "address": address,
+        "phone": phone
+    }
+
+def format_basic_info(data):
+    return f"""
+■ お名前：{data['user_name']}
+■ メールアドレス：{data['user_email']}
+■ 会社名または屋号：{data['company']}
+■ 住所：{data['address']}
+■ 電話番号：{data['phone']}
 """
 
+
 def handle_logo_form():
+    # 共通（基本）情報
+    basic_info = get_basic_info()
+    if basic_info["error"]:
+        return "<br>".join(basic_info["messages"]), 400
+    
     user_name = safe_get_form("user_name")
     user_email = safe_get_form("user_email")
 
@@ -82,8 +113,38 @@ def handle_logo_form():
     colors = safe_get_form_list("logo_colors")
     usage = safe_get_form_list("usage")
 
+        # ▼ 必須チェック
+    errors = []
+    if not target:
+        errors.append("主なターゲット層は必須です。")
+    if not age_group:
+        errors.append("年齢層の選択は必須です。")
+    if not keywords:
+        errors.append("デザインキーワードは1つ以上選択してください。")
+    if not colors:
+        errors.append("イメージカラーは1つ以上選択してください。")
+    if not company_name:
+        errors.append("会社・商品名やサービス名は必須です。")
+    if not name_origin:
+        errors.append("名前の由来は必須です。")
+    if not logo_type:
+        errors.append("ロゴイメージの選択は必須です。")
+    if not direction:
+        errors.append("ロゴの方向性は必須です。")
+    if not usage:
+        errors.append("使用用途は1つ以上選択してください。")
+
+    if errors:
+        return "<br>".join(errors), 400
+
+
     body = f"""
-{get_basic_info()}
+【基本情報】
+■ お名前：{basic_info["user_name"]}
+■ メールアドレス：{basic_info["user_email"]}
+■ 会社名・屋号：{basic_info["company"]}
+■ 住所：{basic_info["address"]}
+■ 電話番号：{basic_info["phone"]}
 
 【ロゴヒアリングシート】
 ■ お名前：{user_name}
@@ -121,13 +182,24 @@ import os
 from werkzeug.utils import secure_filename  # ファイル名安全化のため
 
 def handle_card_form():
+    # 共通（基本）情報
+    basic_info = get_basic_info()
+    if basic_info["error"]:
+        return "<br>".join(basic_info["messages"]), 400
     # 単一入力・テキスト
-    name = safe_get_form("card_name")
+    card_name = safe_get_form("card_name")
+    orientation = safe_get_form("card_orientation")
+    logo_exist = safe_get_form("logo_exist")
+    keywords = safe_get_form_list("keywords")
+    colors = safe_get_form_list("logo_colors")
+    font = safe_get_form("font")
     furigana = safe_get_form("card_furigana")
     romaji = safe_get_form("card_romaji")
     phone = safe_get_form("card_contact")
     address = safe_get_form("address")
     company = safe_get_form("company_name")
+
+
 
     # アップロード画像の取得と保存
     uploaded_image = request.files.get("card_material")
@@ -154,20 +226,45 @@ def handle_card_form():
 
     # 単一選択（ラジオボタン）
     reference_style = safe_get_form("card_reference_url")
+    errors = []
+    if not orientation:
+        errors.append("名刺の向きは必須です。")
+    if not logo_exist:
+        errors.append("既存ロゴの有無は必須です。")
+    if not card_name:
+        errors.append("お名前は必須です。")
+    if not keywords:
+        errors.append("デザインキーワードは1つ以上選択してください。")
+    if not colors:
+        errors.append("イメージカラーは1つ以上選択してください。")
+    if not font:
+        errors.append("ご希望のイメージフォントを選択してください。")
+
+    if errors:
+        return "<br>".join(errors), 400
+
 
     # ✅ ここからメール本文・送信までが関数の「内側」にいる！
     body = f"""
-{get_basic_info()}
+【基本情報】
+■ お名前：{basic_info["user_name"]}
+■ メールアドレス：{basic_info["user_email"]}
+■ 会社名・屋号：{basic_info["company"]}
+■ 住所：{basic_info["address"]}
+■ 電話番号：{basic_info["phone"]}
 
 【名刺ヒアリングシート】
-■ 表記名：{name}
+■ 名刺の向き：{orientation}
+■ 既存ロゴの有無：{logo_exist}
+■ 表記名：{card_name}
 ■ フリガナ：{furigana}
 ■ ローマ字：{romaji}
-■ 電話番号など：{phone}
-■ 住所など：{address}
-■ 会社名など：{company}
+■ 住所・メール・SNS等：{phone}
+■ ご住所など：{address}
+■ 会社名：{company}
 ■ デザインキーワード：{', '.join(keywords)}（補足：{keywords_note}）
 ■ イメージカラー：{', '.join(colors)}（補足：{colors_note}）
+■ ご希望フォント：{font}
 ■ フォントに関するご希望：{font_request}
 ■ 参考イメージ：{reference_style}
 ■ その他参考URL：{reference_url}
@@ -196,65 +293,83 @@ def handle_card_form():
 
 
 def handle_logo_card_form():
-    # 基本情報
-    user_name = safe_get_form("user_name")
-    user_email = safe_get_form("user_email")
+    # 共通（基本）情報
+    basic_info = get_basic_info()
+    if basic_info["error"]:
+        return "<br>".join(basic_info["messages"]), 400
 
-    # ロゴ部分
-    target = safe_get_form("logo_target")
-    age_group = safe_get_form("logo_age_group")
-    priority_color = safe_get_form("priority_color")
+    # 必須項目
+    target = safe_get_form("target_audience")
+    age_group = safe_get_form("target_age_group")
     company_name = safe_get_form("logo_company")
     name_origin = safe_get_form("logo_meaning")
     logo_type = safe_get_form("logo_type")
+    direction = safe_get_form("logo_direction")
+    keywords = safe_get_form_list("keywords")
+    colors = safe_get_form_list("logo_colors")
+    usage = safe_get_form_list("usage")
+    card_name = safe_get_form("card_name")
+    font = safe_get_form("font")
+
+    # バリデーション
+    errors = []
+    if not target:
+        errors.append("主なターゲット層は必須です。")
+    if not age_group:
+        errors.append("ターゲットの年齢層は必須です。")
+    if not company_name:
+        errors.append("会社・商品名は必須です。")
+    if not name_origin:
+        errors.append("名前の由来は必須です。")
+    if not logo_type:
+        errors.append("ロゴイメージは必須です。")
+    if not direction:
+        errors.append("ロゴの方向性は必須です。")
+    if not keywords:
+        errors.append("デザインキーワードは1つ以上選択してください。")
+    if not colors:
+        errors.append("イメージカラーは1つ以上選択してください。")
+    if not usage:
+        errors.append("使用用途は1つ以上選択してください。")
+    if not card_name:
+        errors.append("表記名（名刺）は必須です。")
+    if not font:
+        errors.append("ご希望のフォントは必須です。")
+
+    if errors:
+        return "<br>".join(errors), 400
+
+    # 任意・補足項目
     motif = safe_get_form("logo_motif")
     text = safe_get_form("logo_text")
-    direction = safe_get_form("logo_direction")
     usage_other = safe_get_form("usage_other_text")
-    reference_url = safe_get_form("logo_reference_url")
-    other = safe_get_form("logo_other")
-
-    keywords_logo = safe_get_form_list("keywords")
-    colors_logo = safe_get_form_list("logo_colors")
-    usage_logo = safe_get_form_list("usage")
-
-    # 名刺部分
-    name = safe_get_form("card_name")
+    priority_color = safe_get_form("priority_color")
+    reference_url = safe_get_form("reference_url")
+    other = safe_get_form("other_requests")
     furigana = safe_get_form("card_furigana")
     romaji = safe_get_form("card_romaji")
     phone = safe_get_form("card_contact")
     address = safe_get_form("address")
-    company = safe_get_form("company_name")
-
-    keywords_card = safe_get_form_list("card_keywords")
-    colors_card = safe_get_form_list("card_colors")
-    reference_img = request.files.get("card_material")
-
+    card_back = safe_get_form("card_back")
+    qr_url = safe_get_form("qr_url")
     font_notes = safe_get_form("font_notes")
-    reference_url_card = safe_get_form("reference_url")
-    other_requests = safe_get_form("other_requests")
 
-    # アップロード画像の保存
-    saved_filename = ""
-    if reference_img and reference_img.filename != "":
-        upload_dir = "uploads"
-        os.makedirs(upload_dir, exist_ok=True)
-        filename = secure_filename(reference_img.filename)
-        save_path = os.path.join(upload_dir, filename)
-        reference_img.save(save_path)
-        saved_filename = filename
-
-    # メール本文組み立て
+    # メール本文
     body = f"""
-{get_basic_info()}
+【基本情報】
+■ お名前：{basic_info["user_name"]}
+■ メールアドレス：{basic_info["user_email"]}
+■ 会社名・屋号：{basic_info["company"]}
+■ 住所：{basic_info["address"]}
+■ 電話番号：{basic_info["phone"]}
+
 
 【ロゴ＋名刺ヒアリングシート】
-
 === ロゴデザイン ===
 ■ ターゲット層：{target}
 ■ 年齢層：{age_group}
-■ デザインキーワード：{', '.join(keywords_logo)}
-■ イメージカラー：{', '.join(colors_logo)}
+■ デザインキーワード：{', '.join(keywords)}
+■ イメージカラー：{', '.join(colors)}
 ■ 重要視する色：{priority_color}
 ■ 会社・商品名：{company_name}
 ■ 名前の由来：{name_origin}
@@ -262,30 +377,22 @@ def handle_logo_card_form():
 ■ モチーフ：{motif}
 ■ ロゴに入れるテキスト：{text}
 ■ ロゴの方向性：{direction}
-■ 使用用途：{', '.join(usage_logo)}
+■ 使用用途：{', '.join(usage)}
 ■ その他の使用用途：{usage_other}
 ■ 参考URL：{reference_url}
 ■ その他のご希望：{other}
 
 === 名刺デザイン ===
-■ 表記名：{name}
+■ 表記名：{card_name}
 ■ フリガナ：{furigana}
 ■ ローマ字表記：{romaji}
-■ 電話番号など：{phone}
+■ 住所・メール・SNS情報等：{phone}
 ■ 住所：{address}
-■ 会社名：{company}
-■ デザインキーワード：{', '.join(keywords_card)}
-■ イメージカラー：{', '.join(colors_card)}
-■ フォントに関する要望：{font_notes}
-■ 参考URL：{reference_url_card}
-■ その他ご要望：{other_requests}
+■ 裏面に入れる内容：{card_back}
+■ QRコードURL：{qr_url}
+■ ご希望フォント：{font}
+■ フォントに関するご希望：{font_notes}
 """
-
-    # 添付ファイル
-    attachments = []
-    if saved_filename:
-        file_path = os.path.join("uploads", saved_filename)
-        attachments.append(file_path)
 
     try:
         send_mail(
@@ -293,12 +400,12 @@ def handle_logo_card_form():
             sender_email="azumaprint@p-pigeon.com",
             app_password="zhzt njjz lmby hunm",
             recipient_email="az_bridal@p-pigeon.com",
-            body=body,
-            attachments=attachments
+            body=body
         )
         return render_template("thank_you.html")
     except Exception as e:
         return f"送信エラー: {e}"
+
 
 def send_mail(subject, sender_email, app_password, recipient_email, body, attachments=None):
     subject = unicodedata.normalize("NFKC", str(subject)).replace(u'\u00A0', ' ')
