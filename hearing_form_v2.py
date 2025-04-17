@@ -21,7 +21,13 @@ def safe_get_form(key, default=""):
 
 # 安全にフォームからリスト値を取得するヘルパー関数
 def safe_get_form_list(key):
-    values = request.form.getlist(key)
+    # request.formがgetlistメソッドを持っているか確認
+    if hasattr(request.form, 'getlist'):
+        values = request.form.getlist(key)
+    else:
+        # getlistがない場合、keyがあればそれを単一の値としてリストに入れる
+        values = [request.form.get(key, '')] if key in request.form else []
+    
     return [unicodedata.normalize("NFKC", str(value)).replace("\u00A0", " ") if value else "" for value in values]
 
 # トップページの表示（index.htmlを表示する）
