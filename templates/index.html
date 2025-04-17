@@ -112,24 +112,24 @@
   <div class="design-keywords">
     <label class="section-title">デザインキーワード <span class="required">※</span></label>
     <div class="checkbox-grid">
-      <label><input name="keywords" type="checkbox" value="可愛い・キュート" {% if "可愛い・キュート" in form_data.getlist('keywords') %}checked{% endif %}>可愛い・キュート</label>
-      <label><input name="keywords" type="checkbox" value="カジュアル" {% if "カジュアル" in form_data.getlist('keywords') %}checked{% endif %}>カジュアル</label>
-      <label><input name="keywords" type="checkbox" value="ポップ" {% if "ポップ" in form_data.getlist('keywords') %}checked{% endif %}>ポップ</label>
-      <label><input name="keywords" type="checkbox" value="カラフル" {% if "カラフル" in form_data.getlist('keywords') %}checked{% endif %}>カラフル</label>
-      <label><input name="keywords" type="checkbox" value="ゴージャス" {% if "ゴージャス" in form_data.getlist('keywords') %}checked{% endif %}>ゴージャス</label>
-      <label><input name="keywords" type="checkbox" value="にぎやか" {% if "にぎやか" in form_data.getlist('keywords') %}checked{% endif %}>にぎやか</label>
-      <label><input name="keywords" type="checkbox" value="モダン" {% if "モダン" in form_data.getlist('keywords') %}checked{% endif %}>モダン</label>
-      <label><input name="keywords" type="checkbox" value="ナチュラル" {% if "ナチュラル" in form_data.getlist('keywords') %}checked{% endif %}>ナチュラル</label>
-      <label><input name="keywords" type="checkbox" value="シック" {% if "シック" in form_data.getlist('keywords') %}checked{% endif %}>シック</label>
-      <label><input name="keywords" type="checkbox" value="クール" {% if "クール" in form_data.getlist('keywords') %}checked{% endif %}>クール</label>
-      <label><input name="keywords" type="checkbox" value="エレガント" {% if "エレガント" in form_data.getlist('keywords') %}checked{% endif %}>エレガント</label>
-      <label><input name="keywords" type="checkbox" value="高級感" {% if "高級感" in form_data.getlist('keywords') %}checked{% endif %}>高級感</label>
-      <label><input name="keywords" type="checkbox" value="知性的" {% if "知性的" in form_data.getlist('keywords') %}checked{% endif %}>知性的</label>
-      <label><input name="keywords" type="checkbox" value="パステル" {% if "パステル" in form_data.getlist('keywords') %}checked{% endif %}>パステル</label>
-      <label><input name="keywords" type="checkbox" value="シンプル" {% if "シンプル" in form_data.getlist('keywords') %}checked{% endif %}>シンプル</label>
-      <label><input name="keywords" type="checkbox" value="清潔な" {% if "清潔な" in form_data.getlist('keywords') %}checked{% endif %}>清潔な</label>
-      <label><input name="keywords" type="checkbox" value="派手" {% if "派手" in form_data.getlist('keywords') %}checked{% endif %}>派手</label>
-      <label><input name="keywords" type="checkbox" value="その他" {% if "その他" in form_data.getlist('keywords') %}checked{% endif %}>その他</label>
+      <label><input name="keywords" type="checkbox" value="可愛い・キュート" {% if form_data.get("keywords") and "可愛い・キュート" in form_data.get("keywords") %}checked{% endif %}>可愛い・キュート</label>
+      <label><input name="keywords" type="checkbox" value="カジュアル" {% if form_data.get("keywords") and "カジュアル" in form_data.get("keywords") %}checked{% endif %}>カジュアル</label>
+      <label><input name="keywords" type="checkbox" value="ポップ" {% if form_data.get("keywords") and "ポップ" in form_data.get("keywords") %}checked{% endif %}>ポップ</label>
+      <label><input name="keywords" type="checkbox" value="カラフル" {% if form_data.get("keywords") and "カラフル" in form_data.get("keywords") %}checked{% endif %}>カラフル</label>
+      <label><input name="keywords" type="checkbox" value="ゴージャス" {% if form_data.get("keywords") and "ゴージャス" in form_data.get("keywords") %}checked{% endif %}>ゴージャス</label>
+      <label><input name="keywords" type="checkbox" value="にぎやか" {% if form_data.get("keywords") and "にぎやか" in form_data.get("keywords") %}checked{% endif %}>にぎやか</label>
+      <label><input name="keywords" type="checkbox" value="モダン" {% if form_data.get("keywords") and "モダン" in form_data.get("keywords") %}checked{% endif %}>モダン</label>
+      <label><input name="keywords" type="checkbox" value="ナチュラル" {% if form_data.get("keywords") and "ナチュラル" in form_data.get("keywords") %}checked{% endif %}>ナチュラル</label>
+      <label><input name="keywords" type="checkbox" value="シック" {% if form_data.get("keywords") and "シック" in form_data.get("keywords") %}checked{% endif %}>シック</label>
+      <label><input name="keywords" type="checkbox" value="クール" {% if form_data.get("keywords") and "クール" in form_data.get("keywords") %}checked{% endif %}>クール</label>
+      <label><input name="keywords" type="checkbox" value="エレガント" {% if form_data.get("keywords") and "エレガント" in form_data.get("keywords") %}checked{% endif %}>エレガント</label>
+      <label><input name="keywords" type="checkbox" value="高級感" {% if form_data.get("keywords") and "高級感" in form_data.get("keywords") %}checked{% endif %}>高級感</label>
+      <label><input name="keywords" type="checkbox" value="知性的" {% if form_data.get("keywords") and "知性的" in form_data.get("keywords") %}checked{% endif %}>知性的</label>
+      <label><input name="keywords" type="checkbox" value="パステル" {% if form_data.get("keywords") and "パステル" in form_data.get("keywords") %}checked{% endif %}>パステル</label>
+      <label><input name="keywords" type="checkbox" value="シンプル" {% if form_data.get("keywords") and "シンプル" in form_data.get("keywords") %}checked{% endif %}>シンプル</label>
+      <label><input name="keywords" type="checkbox" value="清潔な" {% if form_data.get("keywords") and "清潔な" in form_data.get("keywords") %}checked{% endif %}>清潔な</label>
+      <label><input name="keywords" type="checkbox" value="派手" {% if form_data.get("keywords") and "派手" in form_data.get("keywords") %}checked{% endif %}>派手</label>
+      <label><input name="keywords" type="checkbox" value="その他" {% if form_data.get("keywords") and "その他" in form_data.get("keywords") %}checked{% endif %}>その他</label>
     </div>
 
     {% if errors and "デザインキーワードは1つ以上選択してください。" in errors %}
@@ -138,39 +138,38 @@
   </div>
 </div>
 
+
 <!-- 🎨 イメージカラー（複数選択可・必須） -->
-<div class="form-group">
-  <label class="section-title">イメージカラー（複数選択可）<span class="required">※</span></label>
-  <div class="color-checkbox-group">
-    <!-- 赤系 -->
-    <label class="color-checkbox">
-      <input name="logo_colors" type="checkbox" value="red" {% if 'red' in form_data.getlist('logo_colors') %}checked{% endif %}>
-      <span class="color-label">赤系（快活・若々しい・温かみ）</span>
-      <div class="color-sample">
-        <span style="background-color: #ff9999;"></span>
-        <span style="background-color: #ff6666;"></span>
-        <span style="background-color: #ff4d88;"></span>
-        <span style="background-color: #ff3377;"></span>
-        <span style="background-color: #ff66b2;"></span>
-      </div>
-    </label>
-           </label>
-        
-           <!-- 青系 -->
-    <label class="color-checkbox">
-      <input name="logo_colors" type="checkbox" value="blue" {% if 'blue' in form_data.getlist('logo_colors') %}checked{% endif %}>
-      <span class="color-label">青系（堅実・信頼・クール）</span>
-      <div class="color-sample">
-        <span style="background-color: #336699;"></span>
-        <span style="background-color: #4477aa;"></span>
-        <span style="background-color: #6699cc;"></span>
-        <span style="background-color: #99bbdd;"></span>
-        <span style="background-color: #cce5ff;"></span>
-      </div>
-    </label>
+<label class="color-checkbox">
+  <input name="logo_colors" type="checkbox" value="red"
+    {% if form_data.get("logo_colors") and "red" in form_data.get("logo_colors") %}checked{% endif %}>
+  <span class="color-label">赤系（快活・若々しい・温かみ）</span>
+  <div class="color-sample">
+    <span style="background-color: #ff9999;"></span>
+    <span style="background-color: #ff6666;"></span>
+    <span style="background-color: #ff4d88;"></span>
+    <span style="background-color: #ff3377;"></span>
+    <span style="background-color: #ff66b2;"></span>
+  </div>
+</label>
+
+<label class="color-checkbox">
+  <input name="logo_colors" type="checkbox" value="blue"
+    {% if form_data.get("logo_colors") and "blue" in form_data.get("logo_colors") %}checked{% endif %}>
+  <span class="color-label">青系（堅実・信頼・クール）</span>
+  <div class="color-sample">
+    <span style="background-color: #336699;"></span>
+    <span style="background-color: #4477aa;"></span>
+    <span style="background-color: #6699cc;"></span>
+    <span style="background-color: #99bbdd;"></span>
+    <span style="background-color: #cce5ff;"></span>
+  </div>
+</label>
+
 <!-- 水色系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="lightblue" {% if 'lightblue' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="lightblue"
+  {% if form_data.get("logo_colors") and "lightblue" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">水色系（さわやか・信頼・クール）</span>
 <div class="color-sample">
 <span style="background-color: #a8e6ff;"></span>
@@ -182,7 +181,8 @@
 </label>
 <!-- 茶系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="brown" {% if 'brown' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="brown"
+  {% if form_data.get("logo_colors") and "brown" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">茶系（自然・モダン・高級感）</span>
 <div class="color-sample">
 <span style="background-color: #a0522d;"></span>
@@ -194,7 +194,8 @@
 </label>
 <!-- 緑系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="green" {% if 'green' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="green"
+  {% if form_data.get("logo_colors") and "green" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">緑系（健康・ナチュラル）</span>
 <div class="color-sample">
 <span style="background-color: #66bb6a;"></span>
@@ -206,7 +207,8 @@
 </label>
 <!-- 黄・オレンジ系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="yellow_orange" {% if 'yellow_orange' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="yellow_orange"
+  {% if form_data.get("logo_colors") and "yellow_orange" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">黄・オレンジ系（ポップ・にぎやか）</span>
 <div class="color-sample">
 <span style="background-color: #fff176;"></span>
@@ -218,7 +220,8 @@
 </label>
 <!-- グレー系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="gray" {% if 'gray' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="gray"
+  {% if form_data.get("logo_colors") and "gray" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">グレー系（重厚・シック・高級感）</span>
 <div class="color-sample">
 <span style="background-color: #999;"></span>
@@ -230,7 +233,8 @@
 </label>
 <!-- 紫系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="purple" {% if 'purple' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="purple"
+  {% if form_data.get("logo_colors") and "purple" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">紫系（幻想・神秘的）</span>
 <div class="color-sample">
 <span style="background-color: #ba68c8;"></span>
@@ -241,7 +245,8 @@
 </div>
 </label>
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="monochrome" {% if 'monochrome' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="monochrome"
+  {% if form_data.get("logo_colors") and "monochrome" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">モノクロ</span>
 <div class="color-sample">
 <span style="background-color: #000;"></span>
@@ -344,18 +349,36 @@
 <div class="form-group">
   <label class="section-title">● ロゴの使用用途を教えてください（複数可）<span class="required">※</span></label>
   <div class="logo-usage">
-    <label><input name="usage" type="checkbox" value="Webサイト" {% if 'Webサイト' in form_data.getlist('usage') %}checked{% endif %}>Webサイト</label>
-    <label><input name="usage" type="checkbox" value="紙媒体" {% if '紙媒体' in form_data.getlist('usage') %}checked{% endif %}>名刺・封筒などの紙媒体</label>
-    <label><input name="usage" type="checkbox" value="SNSアイコン" {% if 'SNSアイコン' in form_data.getlist('usage') %}checked{% endif %}>SNSアイコン</label>
-    <label><input name="usage" type="checkbox" value="看板・サイン" {% if '看板・サイン' in form_data.getlist('usage') %}checked{% endif %}>看板・サイン</label>
-    <label><input name="usage" type="checkbox" value="パッケージ" {% if 'パッケージ' in form_data.getlist('usage') %}checked{% endif %}>グッズやパッケージ</label>
-    <label><input name="usage" type="checkbox" value="その他" {% if 'その他' in form_data.getlist('usage') %}checked{% endif %}>その他（テキスト入力）</label>
+    <label><input name="usage" type="checkbox" value="Webサイト"
+      {% if form_data.get("usage") and "Webサイト" in form_data.get("usage") %}checked{% endif %}>
+      Webサイト</label>
+
+    <label><input name="usage" type="checkbox" value="紙媒体"
+      {% if form_data.get("usage") and "紙媒体" in form_data.get("usage") %}checked{% endif %}>
+      名刺・封筒などの紙媒体</label>
+
+    <label><input name="usage" type="checkbox" value="SNSアイコン"
+      {% if form_data.get("usage") and "SNSアイコン" in form_data.get("usage") %}checked{% endif %}>
+      SNSアイコン</label>
+
+    <label><input name="usage" type="checkbox" value="看板・サイン"
+      {% if form_data.get("usage") and "看板・サイン" in form_data.get("usage") %}checked{% endif %}>
+      看板・サイン</label>
+
+    <label><input name="usage" type="checkbox" value="パッケージ"
+      {% if form_data.get("usage") and "パッケージ" in form_data.get("usage") %}checked{% endif %}>
+      グッズやパッケージ</label>
+
+    <label><input name="usage" type="checkbox" value="その他"
+      {% if form_data.get("usage") and "その他" in form_data.get("usage") %}checked{% endif %}>
+      その他（テキスト入力）</label>
   </div>
 
   {% if errors and "使用用途は1つ以上選択してください。" in errors %}
     <p class="error-text">ここを選択してください</p>
   {% endif %}
 </div>
+
 <div class="form-group">
 <label class="section-title">ロゴの参考URL（あれば）</label>
 <textarea name="logo_reference_url" placeholder="例：https://true-az.com/ カラーを参考にしたい など" rows="2"></textarea>
@@ -474,64 +497,70 @@
 <input name="qr_url" type="url"/>
 </div>
 <!-- ✅ デザインキーワード（名刺用） -->
-<div class="design-keywords">
-  <label class="section-title">デザインキーワード <span class="required">※</span></label>
-  <div class="checkbox-grid">
-    <label><input name="keywords" type="checkbox" value="可愛い・キュート" {% if '可愛い・キュート' in form_data.getlist('keywords') %}checked{% endif %}>可愛い・キュート</label>
-    <label><input name="keywords" type="checkbox" value="カジュアル" {% if 'カジュアル' in form_data.getlist('keywords') %}checked{% endif %}>カジュアル</label>
-    <label><input name="keywords" type="checkbox" value="ポップ" {% if 'ポップ' in form_data.getlist('keywords') %}checked{% endif %}>ポップ</label>
-    <label><input name="keywords" type="checkbox" value="カラフル" {% if 'カラフル' in form_data.getlist('keywords') %}checked{% endif %}>カラフル</label>
-    <label><input name="keywords" type="checkbox" value="ゴージャス" {% if 'ゴージャス' in form_data.getlist('keywords') %}checked{% endif %}>ゴージャス</label>
-    <label><input name="keywords" type="checkbox" value="にぎやか" {% if 'にぎやか' in form_data.getlist('keywords') %}checked{% endif %}>にぎやか</label>
-    <label><input name="keywords" type="checkbox" value="モダン" {% if 'モダン' in form_data.getlist('keywords') %}checked{% endif %}>モダン</label>
-    <label><input name="keywords" type="checkbox" value="ナチュラル" {% if 'ナチュラル' in form_data.getlist('keywords') %}checked{% endif %}>ナチュラル</label>
-    <label><input name="keywords" type="checkbox" value="シック" {% if 'シック' in form_data.getlist('keywords') %}checked{% endif %}>シック</label>
-    <label><input name="keywords" type="checkbox" value="クール" {% if 'クール' in form_data.getlist('keywords') %}checked{% endif %}>クール</label>
-    <label><input name="keywords" type="checkbox" value="エレガント" {% if 'エレガント' in form_data.getlist('keywords') %}checked{% endif %}>エレガント</label>
-    <label><input name="keywords" type="checkbox" value="高級感" {% if '高級感' in form_data.getlist('keywords') %}checked{% endif %}>高級感</label>
-    <label><input name="keywords" type="checkbox" value="知性的" {% if '知性的' in form_data.getlist('keywords') %}checked{% endif %}>知性的</label>
-    <label><input name="keywords" type="checkbox" value="パステル" {% if 'パステル' in form_data.getlist('keywords') %}checked{% endif %}>パステル</label>
-    <label><input name="keywords" type="checkbox" value="シンプル" {% if 'シンプル' in form_data.getlist('keywords') %}checked{% endif %}>シンプル</label>
-    <label><input name="keywords" type="checkbox" value="清潔な" {% if '清潔な' in form_data.getlist('keywords') %}checked{% endif %}>清潔な</label>
-    <label><input name="keywords" type="checkbox" value="派手" {% if '派手' in form_data.getlist('keywords') %}checked{% endif %}>派手</label>
-    <label><input name="keywords" type="checkbox" value="その他" {% if 'その他' in form_data.getlist('keywords') %}checked{% endif %}>その他</label>
-  </div>
+<!-- 🎯 デザインキーワード（複数選択・必須） -->
+<div class="form-group">
+  <div class="design-keywords">
+    <label class="section-title">デザインキーワード <span class="required">※</span></label>
+    <div class="checkbox-grid">
+      <label><input name="keywords" type="checkbox" value="可愛い・キュート" {% if form_data.get("keywords") and "可愛い・キュート" in form_data.get("keywords") %}checked{% endif %}>可愛い・キュート</label>
+      <label><input name="keywords" type="checkbox" value="カジュアル" {% if form_data.get("keywords") and "カジュアル" in form_data.get("keywords") %}checked{% endif %}>カジュアル</label>
+      <label><input name="keywords" type="checkbox" value="ポップ" {% if form_data.get("keywords") and "ポップ" in form_data.get("keywords") %}checked{% endif %}>ポップ</label>
+      <label><input name="keywords" type="checkbox" value="カラフル" {% if form_data.get("keywords") and "カラフル" in form_data.get("keywords") %}checked{% endif %}>カラフル</label>
+      <label><input name="keywords" type="checkbox" value="ゴージャス" {% if form_data.get("keywords") and "ゴージャス" in form_data.get("keywords") %}checked{% endif %}>ゴージャス</label>
+      <label><input name="keywords" type="checkbox" value="にぎやか" {% if form_data.get("keywords") and "にぎやか" in form_data.get("keywords") %}checked{% endif %}>にぎやか</label>
+      <label><input name="keywords" type="checkbox" value="モダン" {% if form_data.get("keywords") and "モダン" in form_data.get("keywords") %}checked{% endif %}>モダン</label>
+      <label><input name="keywords" type="checkbox" value="ナチュラル" {% if form_data.get("keywords") and "ナチュラル" in form_data.get("keywords") %}checked{% endif %}>ナチュラル</label>
+      <label><input name="keywords" type="checkbox" value="シック" {% if form_data.get("keywords") and "シック" in form_data.get("keywords") %}checked{% endif %}>シック</label>
+      <label><input name="keywords" type="checkbox" value="クール" {% if form_data.get("keywords") and "クール" in form_data.get("keywords") %}checked{% endif %}>クール</label>
+      <label><input name="keywords" type="checkbox" value="エレガント" {% if form_data.get("keywords") and "エレガント" in form_data.get("keywords") %}checked{% endif %}>エレガント</label>
+      <label><input name="keywords" type="checkbox" value="高級感" {% if form_data.get("keywords") and "高級感" in form_data.get("keywords") %}checked{% endif %}>高級感</label>
+      <label><input name="keywords" type="checkbox" value="知性的" {% if form_data.get("keywords") and "知性的" in form_data.get("keywords") %}checked{% endif %}>知性的</label>
+      <label><input name="keywords" type="checkbox" value="パステル" {% if form_data.get("keywords") and "パステル" in form_data.get("keywords") %}checked{% endif %}>パステル</label>
+      <label><input name="keywords" type="checkbox" value="シンプル" {% if form_data.get("keywords") and "シンプル" in form_data.get("keywords") %}checked{% endif %}>シンプル</label>
+      <label><input name="keywords" type="checkbox" value="清潔な" {% if form_data.get("keywords") and "清潔な" in form_data.get("keywords") %}checked{% endif %}>清潔な</label>
+      <label><input name="keywords" type="checkbox" value="派手" {% if form_data.get("keywords") and "派手" in form_data.get("keywords") %}checked{% endif %}>派手</label>
+      <label><input name="keywords" type="checkbox" value="その他" {% if form_data.get("keywords") and "その他" in form_data.get("keywords") %}checked{% endif %}>その他</label>
+    </div>
 
-  {% if errors and "デザインキーワードは1つ以上選択してください。" in errors %}
-    <p class="error-text">ここを選択してください</p>
-  {% endif %}
+    {% if errors and "デザインキーワードは1つ以上選択してください。" in errors %}
+      <p class="error-text">ここを選択してください</p>
+    {% endif %}
+  </div>
+</div>
+
 </div>
 <!-- ✅ イメージカラー（名刺用） -->
-<div class="form-group">
-<label class="section-title">イメージカラー（複数選択可）<span class="required">※</span></label>
-<div class="color-checkbox-group">
-<!-- 赤系 -->
+<!-- 🎨 イメージカラー（複数選択可・必須） -->
 <label class="color-checkbox">
-  <input name="logo_colors" type="checkbox" value="red" {% if 'red' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="red"
+    {% if form_data.get("logo_colors") and "red" in form_data.get("logo_colors") %}checked{% endif %}>
   <span class="color-label">赤系（快活・若々しい・温かみ）</span>
   <div class="color-sample">
-  <span style="background-color: #ff9999;"></span>
-  <span style="background-color: #ff6666;"></span>
-  <span style="background-color: #ff4d88;"></span>
-  <span style="background-color: #ff3377;"></span>
-  <span style="background-color: #ff66b2;"></span>
+    <span style="background-color: #ff9999;"></span>
+    <span style="background-color: #ff6666;"></span>
+    <span style="background-color: #ff4d88;"></span>
+    <span style="background-color: #ff3377;"></span>
+    <span style="background-color: #ff66b2;"></span>
   </div>
 </label>
-<!-- 青系 -->
+
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="blue" {% if 'blue' in form_data.getlist('logo_colors') %}checked{% endif %}>
-<span class="color-label">青系（堅実・信頼・クール）</span>
-<div class="color-sample">
-<span style="background-color: #336699;"></span>
-<span style="background-color: #4477aa;"></span>
-<span style="background-color: #6699cc;"></span>
-<span style="background-color: #99bbdd;"></span>
-<span style="background-color: #cce5ff;"></span>
-</div>
+  <input name="logo_colors" type="checkbox" value="blue"
+    {% if form_data.get("logo_colors") and "blue" in form_data.get("logo_colors") %}checked{% endif %}>
+  <span class="color-label">青系（堅実・信頼・クール）</span>
+  <div class="color-sample">
+    <span style="background-color: #336699;"></span>
+    <span style="background-color: #4477aa;"></span>
+    <span style="background-color: #6699cc;"></span>
+    <span style="background-color: #99bbdd;"></span>
+    <span style="background-color: #cce5ff;"></span>
+  </div>
 </label>
+
 <!-- 水色系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="lightblue" {% if 'lightblue' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="lightblue"
+  {% if form_data.get("logo_colors") and "lightblue" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">水色系（さわやか・信頼・クール）</span>
 <div class="color-sample">
 <span style="background-color: #a8e6ff;"></span>
@@ -543,7 +572,8 @@
 </label>
 <!-- 茶系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="brown" {% if 'brown' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="brown"
+  {% if form_data.get("logo_colors") and "brown" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">茶系（自然・モダン・高級感）</span>
 <div class="color-sample">
 <span style="background-color: #a0522d;"></span>
@@ -555,7 +585,8 @@
 </label>
 <!-- 緑系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="green" {% if 'green' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="green"
+  {% if form_data.get("logo_colors") and "green" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">緑系（健康・ナチュラル）</span>
 <div class="color-sample">
 <span style="background-color: #66bb6a;"></span>
@@ -567,7 +598,8 @@
 </label>
 <!-- 黄・オレンジ系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="yellow_orange" {% if 'yellow_orange' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="yellow_orange"
+  {% if form_data.get("logo_colors") and "yellow_orange" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">黄・オレンジ系（ポップ・にぎやか）</span>
 <div class="color-sample">
 <span style="background-color: #fff176;"></span>
@@ -579,7 +611,8 @@
 </label>
 <!-- グレー系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="gray" {% if 'gray' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="gray"
+  {% if form_data.get("logo_colors") and "gray" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">グレー系（重厚・シック・高級感）</span>
 <div class="color-sample">
 <span style="background-color: #999;"></span>
@@ -591,7 +624,8 @@
 </label>
 <!-- 紫系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="purple" {% if 'purple' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="purple"
+  {% if form_data.get("logo_colors") and "purple" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">紫系（幻想・神秘的）</span>
 <div class="color-sample">
 <span style="background-color: #ba68c8;"></span>
@@ -601,9 +635,9 @@
 <span style="background-color: #7b1fa2;"></span>
 </div>
 </label>
-<!-- モノクロ -->
 <label class="color-checkbox">
-  <input name="logo_colors" type="checkbox" value="monochrome" {% if 'monochrome' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="monochrome"
+  {% if form_data.get("logo_colors") and "monochrome" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">モノクロ</span>
 <div class="color-sample">
 <span style="background-color: #000;"></span>
@@ -612,9 +646,11 @@
 <span style="background-color: #ccc;"></span>
 <span style="background-color: #fff;"></span>
 </div>
+</label>
+</div>
 {% if errors and "イメージカラーは1つ以上選択してください。" in errors %}
-    <p class="error-text">ここを選択してください</p>
-  {% endif %}
+<p class="error-text">ここを選択してください</p>
+{% endif %}
 </div>
 </label>
 <!-- 重要視する色 -->
@@ -802,18 +838,36 @@
 <div class="form-group">
   <label class="section-title">● ロゴの使用用途を教えてください（複数可）<span class="required">※</span></label>
   <div class="logo-usage">
-    <label><input name="usage" type="checkbox" value="Webサイト" {% if 'Webサイト' in form_data.getlist('usage') %}checked{% endif %}>Webサイト</label>
-    <label><input name="usage" type="checkbox" value="紙媒体" {% if '紙媒体' in form_data.getlist('usage') %}checked{% endif %}>名刺・封筒などの紙媒体</label>
-    <label><input name="usage" type="checkbox" value="SNSアイコン" {% if 'SNSアイコン' in form_data.getlist('usage') %}checked{% endif %}>SNSアイコン</label>
-    <label><input name="usage" type="checkbox" value="看板・サイン" {% if '看板・サイン' in form_data.getlist('usage') %}checked{% endif %}>看板・サイン</label>
-    <label><input name="usage" type="checkbox" value="パッケージ" {% if 'パッケージ' in form_data.getlist('usage') %}checked{% endif %}>グッズやパッケージ</label>
-    <label><input name="usage" type="checkbox" value="その他" {% if 'その他' in form_data.getlist('usage') %}checked{% endif %}>その他（テキスト入力）</label>
+    <label><input name="usage" type="checkbox" value="Webサイト"
+      {% if form_data.get("usage") and "Webサイト" in form_data.get("usage") %}checked{% endif %}>
+      Webサイト</label>
+
+    <label><input name="usage" type="checkbox" value="紙媒体"
+      {% if form_data.get("usage") and "紙媒体" in form_data.get("usage") %}checked{% endif %}>
+      名刺・封筒などの紙媒体</label>
+
+    <label><input name="usage" type="checkbox" value="SNSアイコン"
+      {% if form_data.get("usage") and "SNSアイコン" in form_data.get("usage") %}checked{% endif %}>
+      SNSアイコン</label>
+
+    <label><input name="usage" type="checkbox" value="看板・サイン"
+      {% if form_data.get("usage") and "看板・サイン" in form_data.get("usage") %}checked{% endif %}>
+      看板・サイン</label>
+
+    <label><input name="usage" type="checkbox" value="パッケージ"
+      {% if form_data.get("usage") and "パッケージ" in form_data.get("usage") %}checked{% endif %}>
+      グッズやパッケージ</label>
+
+    <label><input name="usage" type="checkbox" value="その他"
+      {% if form_data.get("usage") and "その他" in form_data.get("usage") %}checked{% endif %}>
+      その他（テキスト入力）</label>
   </div>
 
   {% if errors and "使用用途は1つ以上選択してください。" in errors %}
     <p class="error-text">ここを選択してください</p>
   {% endif %}
 </div>
+
 
             
 <div class="form-group">
@@ -858,32 +912,37 @@
   <p>ロゴ・名刺共通の場合は1回でOKです。</p>
   <p>ロゴ・名刺で分けたい場合は下記にそれぞれご記入ください。</p>
 
+  <!-- 🎯 デザインキーワード（複数選択・必須） -->
+<div class="form-group">
   <div class="design-keywords">
+    <label class="section-title">デザインキーワード <span class="required">※</span></label>
     <div class="checkbox-grid">
-      <label><input name="keywords" type="checkbox" value="可愛い・キュート" {% if '可愛い・キュート' in form_data.getlist('keywords') %}checked{% endif %}>可愛い・キュート</label>
-      <label><input name="keywords" type="checkbox" value="カジュアル" {% if 'カジュアル' in form_data.getlist('keywords') %}checked{% endif %}>カジュアル</label>
-      <label><input name="keywords" type="checkbox" value="ポップ" {% if 'ポップ' in form_data.getlist('keywords') %}checked{% endif %}>ポップ</label>
-      <label><input name="keywords" type="checkbox" value="カラフル" {% if 'カラフル' in form_data.getlist('keywords') %}checked{% endif %}>カラフル</label>
-      <label><input name="keywords" type="checkbox" value="ゴージャス" {% if 'ゴージャス' in form_data.getlist('keywords') %}checked{% endif %}>ゴージャス</label>
-      <label><input name="keywords" type="checkbox" value="にぎやか" {% if 'にぎやか' in form_data.getlist('keywords') %}checked{% endif %}>にぎやか</label>
-      <label><input name="keywords" type="checkbox" value="モダン" {% if 'モダン' in form_data.getlist('keywords') %}checked{% endif %}>モダン</label>
-      <label><input name="keywords" type="checkbox" value="ナチュラル" {% if 'ナチュラル' in form_data.getlist('keywords') %}checked{% endif %}>ナチュラル</label>
-      <label><input name="keywords" type="checkbox" value="シック" {% if 'シック' in form_data.getlist('keywords') %}checked{% endif %}>シック</label>
-      <label><input name="keywords" type="checkbox" value="クール" {% if 'クール' in form_data.getlist('keywords') %}checked{% endif %}>クール</label>
-      <label><input name="keywords" type="checkbox" value="エレガント" {% if 'エレガント' in form_data.getlist('keywords') %}checked{% endif %}>エレガント</label>
-      <label><input name="keywords" type="checkbox" value="高級感" {% if '高級感' in form_data.getlist('keywords') %}checked{% endif %}>高級感</label>
-      <label><input name="keywords" type="checkbox" value="知性的" {% if '知性的' in form_data.getlist('keywords') %}checked{% endif %}>知性的</label>
-      <label><input name="keywords" type="checkbox" value="パステル" {% if 'パステル' in form_data.getlist('keywords') %}checked{% endif %}>パステル</label>
-      <label><input name="keywords" type="checkbox" value="シンプル" {% if 'シンプル' in form_data.getlist('keywords') %}checked{% endif %}>シンプル</label>
-      <label><input name="keywords" type="checkbox" value="清潔な" {% if '清潔な' in form_data.getlist('keywords') %}checked{% endif %}>清潔な</label>
-      <label><input name="keywords" type="checkbox" value="派手" {% if '派手' in form_data.getlist('keywords') %}checked{% endif %}>派手</label>
-      <label><input name="keywords" type="checkbox" value="その他" {% if 'その他' in form_data.getlist('keywords') %}checked{% endif %}>その他</label>
+      <label><input name="keywords" type="checkbox" value="可愛い・キュート" {% if form_data.get("keywords") and "可愛い・キュート" in form_data.get("keywords") %}checked{% endif %}>可愛い・キュート</label>
+      <label><input name="keywords" type="checkbox" value="カジュアル" {% if form_data.get("keywords") and "カジュアル" in form_data.get("keywords") %}checked{% endif %}>カジュアル</label>
+      <label><input name="keywords" type="checkbox" value="ポップ" {% if form_data.get("keywords") and "ポップ" in form_data.get("keywords") %}checked{% endif %}>ポップ</label>
+      <label><input name="keywords" type="checkbox" value="カラフル" {% if form_data.get("keywords") and "カラフル" in form_data.get("keywords") %}checked{% endif %}>カラフル</label>
+      <label><input name="keywords" type="checkbox" value="ゴージャス" {% if form_data.get("keywords") and "ゴージャス" in form_data.get("keywords") %}checked{% endif %}>ゴージャス</label>
+      <label><input name="keywords" type="checkbox" value="にぎやか" {% if form_data.get("keywords") and "にぎやか" in form_data.get("keywords") %}checked{% endif %}>にぎやか</label>
+      <label><input name="keywords" type="checkbox" value="モダン" {% if form_data.get("keywords") and "モダン" in form_data.get("keywords") %}checked{% endif %}>モダン</label>
+      <label><input name="keywords" type="checkbox" value="ナチュラル" {% if form_data.get("keywords") and "ナチュラル" in form_data.get("keywords") %}checked{% endif %}>ナチュラル</label>
+      <label><input name="keywords" type="checkbox" value="シック" {% if form_data.get("keywords") and "シック" in form_data.get("keywords") %}checked{% endif %}>シック</label>
+      <label><input name="keywords" type="checkbox" value="クール" {% if form_data.get("keywords") and "クール" in form_data.get("keywords") %}checked{% endif %}>クール</label>
+      <label><input name="keywords" type="checkbox" value="エレガント" {% if form_data.get("keywords") and "エレガント" in form_data.get("keywords") %}checked{% endif %}>エレガント</label>
+      <label><input name="keywords" type="checkbox" value="高級感" {% if form_data.get("keywords") and "高級感" in form_data.get("keywords") %}checked{% endif %}>高級感</label>
+      <label><input name="keywords" type="checkbox" value="知性的" {% if form_data.get("keywords") and "知性的" in form_data.get("keywords") %}checked{% endif %}>知性的</label>
+      <label><input name="keywords" type="checkbox" value="パステル" {% if form_data.get("keywords") and "パステル" in form_data.get("keywords") %}checked{% endif %}>パステル</label>
+      <label><input name="keywords" type="checkbox" value="シンプル" {% if form_data.get("keywords") and "シンプル" in form_data.get("keywords") %}checked{% endif %}>シンプル</label>
+      <label><input name="keywords" type="checkbox" value="清潔な" {% if form_data.get("keywords") and "清潔な" in form_data.get("keywords") %}checked{% endif %}>清潔な</label>
+      <label><input name="keywords" type="checkbox" value="派手" {% if form_data.get("keywords") and "派手" in form_data.get("keywords") %}checked{% endif %}>派手</label>
+      <label><input name="keywords" type="checkbox" value="その他" {% if form_data.get("keywords") and "その他" in form_data.get("keywords") %}checked{% endif %}>その他</label>
     </div>
-  </div>
 
-  {% if errors and "デザインキーワードは1つ以上選択してください。" in errors %}
-    <p class="error-text">ここを選択してください</p>
-  {% endif %}
+    {% if errors and "デザインキーワードは1つ以上選択してください。" in errors %}
+      <p class="error-text">ここを選択してください</p>
+    {% endif %}
+  </div>
+</div>
+
 
   <label class="section-title">ロゴ用デザインキーワード（任意）</label>
   <textarea name="logo_keywords_note" rows="2">{{ form_data.get('logo_keywords_note', '') }}</textarea>
@@ -898,36 +957,37 @@
   <p>ロゴ・名刺共通の場合は1回でOKです。</p>
   <p>ロゴ・名刺で分けたい場合は下記にそれぞれご記入ください。</p>
 
-  <div class="color-checkbox-group">
+  <!-- 🎨 イメージカラー（複数選択可・必須） -->
+<label class="color-checkbox">
+  <input name="logo_colors" type="checkbox" value="red"
+    {% if form_data.get("logo_colors") and "red" in form_data.get("logo_colors") %}checked{% endif %}>
+  <span class="color-label">赤系（快活・若々しい・温かみ）</span>
+  <div class="color-sample">
+    <span style="background-color: #ff9999;"></span>
+    <span style="background-color: #ff6666;"></span>
+    <span style="background-color: #ff4d88;"></span>
+    <span style="background-color: #ff3377;"></span>
+    <span style="background-color: #ff66b2;"></span>
+  </div>
+</label>
 
-    <!-- 赤系 -->
-    <label class="color-checkbox">
-      <input name="logo_colors" type="checkbox" value="red" {% if 'red' in form_data.getlist('logo_colors') %}checked{% endif %}>
-      <span class="color-label">赤系（快活・若々しい・温かみ）</span>
-      <div class="color-sample">
-        <span style="background-color: #ff9999;"></span>
-        <span style="background-color: #ff6666;"></span>
-        <span style="background-color: #ff4d88;"></span>
-        <span style="background-color: #ff3377;"></span>
-        <span style="background-color: #ff66b2;"></span>
-      </div>
-    </label>
+<label class="color-checkbox">
+  <input name="logo_colors" type="checkbox" value="blue"
+    {% if form_data.get("logo_colors") and "blue" in form_data.get("logo_colors") %}checked{% endif %}>
+  <span class="color-label">青系（堅実・信頼・クール）</span>
+  <div class="color-sample">
+    <span style="background-color: #336699;"></span>
+    <span style="background-color: #4477aa;"></span>
+    <span style="background-color: #6699cc;"></span>
+    <span style="background-color: #99bbdd;"></span>
+    <span style="background-color: #cce5ff;"></span>
+  </div>
+</label>
 
-    <!-- 青系 -->
-    <label class="color-checkbox">
-      <input name="logo_colors" type="checkbox" value="blue" {% if 'blue' in form_data.getlist('logo_colors') %}checked{% endif %}>
-      <span class="color-label">青系（堅実・信頼・クール）</span>
-      <div class="color-sample">
-        <span style="background-color: #336699;"></span>
-        <span style="background-color: #4477aa;"></span>
-        <span style="background-color: #6699cc;"></span>
-        <span style="background-color: #99bbdd;"></span>
-        <span style="background-color: #cce5ff;"></span>
-      </div>
-    </label>
 <!-- 水色系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="lightblue" {% if 'lightblue' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="lightblue"
+  {% if form_data.get("logo_colors") and "lightblue" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">水色系（さわやか・信頼・クール）</span>
 <div class="color-sample">
 <span style="background-color: #a8e6ff;"></span>
@@ -939,7 +999,8 @@
 </label>
 <!-- 茶系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="brown" {% if 'brown' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="brown"
+  {% if form_data.get("logo_colors") and "brown" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">茶系（自然・モダン・高級感）</span>
 <div class="color-sample">
 <span style="background-color: #a0522d;"></span>
@@ -951,7 +1012,8 @@
 </label>
 <!-- 緑系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="green" {% if 'green' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="green"
+  {% if form_data.get("logo_colors") and "green" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">緑系（健康・ナチュラル）</span>
 <div class="color-sample">
 <span style="background-color: #66bb6a;"></span>
@@ -963,7 +1025,8 @@
 </label>
 <!-- 黄・オレンジ系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="yellow_orange" {% if 'yellow_orange' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="yellow_orange"
+  {% if form_data.get("logo_colors") and "yellow_orange" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">黄・オレンジ系（ポップ・にぎやか）</span>
 <div class="color-sample">
 <span style="background-color: #fff176;"></span>
@@ -975,7 +1038,8 @@
 </label>
 <!-- グレー系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="gray" {% if 'gray' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="gray"
+  {% if form_data.get("logo_colors") and "gray" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">グレー系（重厚・シック・高級感）</span>
 <div class="color-sample">
 <span style="background-color: #999;"></span>
@@ -987,7 +1051,8 @@
 </label>
 <!-- 紫系 -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="purple" {% if 'purple' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="purple"
+  {% if form_data.get("logo_colors") and "purple" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">紫系（幻想・神秘的）</span>
 <div class="color-sample">
 <span style="background-color: #ba68c8;"></span>
@@ -997,9 +1062,9 @@
 <span style="background-color: #7b1fa2;"></span>
 </div>
 </label>
-<!-- モノクロ -->
 <label class="color-checkbox">
-<input name="logo_colors" type="checkbox" value="monochrome" {% if 'monochrome' in form_data.getlist('logo_colors') %}checked{% endif %}>
+  <input name="logo_colors" type="checkbox" value="monochrome"
+  {% if form_data.get("logo_colors") and "monochrome" in form_data.get("logo_colors") %}checked{% endif %}>
 <span class="color-label">モノクロ</span>
 <div class="color-sample">
 <span style="background-color: #000;"></span>
@@ -1010,11 +1075,10 @@
 </div>
 </label>
 </div>
-</div>
-
 {% if errors and "イメージカラーは1つ以上選択してください。" in errors %}
-    <p class="error-text">ここを選択してください</p>
-  {% endif %}
+<p class="error-text">ここを選択してください</p>
+{% endif %}
+</div>
 
   <label class="section-title">ロゴ用イメージカラー（任意）</label>
   <textarea name="logo_colors_note" rows="2">{{ form_data.get('logo_colors_note', '') }}</textarea>

@@ -220,8 +220,8 @@ def handle_card_form():
     card_name = safe_get_form("card_name")
     orientation = safe_get_form("card_orientation")
     logo_exist = safe_get_form("logo_exist")
-    keywords = safe_get_form_list("card_keywords")
-    colors = safe_get_form_list("card_colors")
+    keywords = safe_get_form_list("keywords")
+    colors = safe_get_form_list("logo_colors")
     font = safe_get_form("font")
     furigana = safe_get_form("card_furigana")
     romaji = safe_get_form("card_romaji")
@@ -244,8 +244,8 @@ def handle_card_form():
         saved_filename = filename
 
     # チェックボックス（複数選択）
-    keywords = safe_get_form_list("card_keywords")
-    colors = safe_get_form_list("card_colors")
+    keywords = safe_get_form_list("keywords")
+    colors = safe_get_form_list("logo_colors")
 
     # その他入力
     keywords_note = safe_get_form("card_keywords_note")
