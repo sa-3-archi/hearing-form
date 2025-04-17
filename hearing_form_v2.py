@@ -27,7 +27,8 @@ def safe_get_form_list(key):
 # トップページの表示（index.htmlを表示する）
 @app.route('/')
 def index():
-    return render_template("index.html")  # ← これでテンプレートが表示される
+    return render_template("index.html", form_data={}, errors=[], form_type="")
+
 
 # フォームの送信処理
 @app.route('/submit', methods=['POST'])
@@ -368,6 +369,8 @@ def handle_logo_card_form():
         errors.append("使用用途は1つ以上選択してください。")
     if not card_name:
         errors.append("表記名（名刺）は必須です。")
+    if not logo_type:
+        errors.append("ロゴイメージは必須です。")
     if not font:
         errors.append("ご希望のフォントは必須です。")
 
