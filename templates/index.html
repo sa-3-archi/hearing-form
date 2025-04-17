@@ -836,21 +836,37 @@
 </div>
 
 <div class="form-group">
-  <label class="section-title">● ロゴの使用用途を教えてください（複数可）<span class="required">※</span></label>
-  <div class="logo-usage">
-    <label><input name="usage" type="checkbox" value="Webサイト" {% if 'Webサイト' in form_data.getlist('usage') %}checked{% endif %}>Webサイト</label>
-    <label><input name="usage" type="checkbox" value="紙媒体" {% if '紙媒体' in form_data.getlist('usage') %}checked{% endif %}>名刺・封筒などの紙媒体</label>
-    <label><input name="usage" type="checkbox" value="SNSアイコン" {% if 'SNSアイコン' in form_data.getlist('usage') %}checked{% endif %}>SNSアイコン</label>
-    <label><input name="usage" type="checkbox" value="看板・サイン" {% if '看板・サイン' in form_data.getlist('usage') %}checked{% endif %}>看板・サイン</label>
-    <label><input name="usage" type="checkbox" value="パッケージ" {% if 'パッケージ' in form_data.getlist('usage') %}checked{% endif %}>グッズやパッケージ</label>
-    <label><input name="usage" type="checkbox" value="その他" {% if 'その他' in form_data.getlist('usage') %}checked{% endif %}>その他（テキスト入力）</label>
+    <label class="section-title">● ロゴの使用用途を教えてください（複数可）<span class="required">※</span></label>
+    <div class="logo-usage">
+      <label><input name="usage" type="checkbox" value="Webサイト"
+        {% if form_data.get("usage") and "Webサイト" in form_data.get("usage") %}checked{% endif %}>
+        Webサイト</label>
+  
+      <label><input name="usage" type="checkbox" value="紙媒体"
+        {% if form_data.get("usage") and "紙媒体" in form_data.get("usage") %}checked{% endif %}>
+        名刺・封筒などの紙媒体</label>
+  
+      <label><input name="usage" type="checkbox" value="SNSアイコン"
+        {% if form_data.get("usage") and "SNSアイコン" in form_data.get("usage") %}checked{% endif %}>
+        SNSアイコン</label>
+  
+      <label><input name="usage" type="checkbox" value="看板・サイン"
+        {% if form_data.get("usage") and "看板・サイン" in form_data.get("usage") %}checked{% endif %}>
+        看板・サイン</label>
+  
+      <label><input name="usage" type="checkbox" value="パッケージ"
+        {% if form_data.get("usage") and "パッケージ" in form_data.get("usage") %}checked{% endif %}>
+        グッズやパッケージ</label>
+  
+      <label><input name="usage" type="checkbox" value="その他"
+        {% if form_data.get("usage") and "その他" in form_data.get("usage") %}checked{% endif %}>
+        その他（テキスト入力）</label>
+    </div>
+  
+    {% if errors and "使用用途は1つ以上選択してください。" in errors %}
+      <p class="error-text">ここを選択してください</p>
+    {% endif %}
   </div>
-
-  {% if errors and "使用用途は1つ以上選択してください。" in errors %}
-    <p class="error-text">ここを選択してください</p>
-  {% endif %}
-</div>
-
             
 <div class="form-group">
 <input name="usage_other_text" placeholder="その他の使用用途をご記入ください" style="width:100%; padding:0.6rem; border:1px solid #ccc; border-radius:6px; margin-top:8px;" type="text"/>
