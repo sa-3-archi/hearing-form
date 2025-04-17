@@ -66,16 +66,23 @@ def get_basic_info():
         errors.append("電話番号は必須です。")
 
     if errors:
-        return {"error": True, "messages": errors}
+        return {
+        "error": True,
+        "messages": errors,
+        "form_data": request.form  # ★追加！
+    }
+    
+    
 
     return {
-        "error": False,
-        "user_name": user_name,
-        "user_email": user_email,
-        "company": company,
-        "address": address,
-        "phone": phone
-    }
+    "error": False,
+    "user_name": user_name,
+    "user_email": user_email,
+    "company": company,
+    "address": address,
+    "phone": phone,
+    "form_data": request.form  # ★追加（任意）
+}
 
 def format_basic_info(data):
     return f"""
@@ -91,7 +98,13 @@ def handle_logo_form():
     # 共通（基本）情報
     basic_info = get_basic_info()
     if basic_info["error"]:
-        return "<br>".join(basic_info["messages"]), 400
+        return render_template(
+        "index.html",
+        errors=basic_info["messages"],
+        form_data=basic_info["form_data"],  # ★フォーム値も戻す
+        form_type="logo_only"
+    )
+
     
     user_name = safe_get_form("user_name")
     user_email = safe_get_form("user_email")
@@ -134,9 +147,14 @@ def handle_logo_form():
     if not usage:
         errors.append("使用用途は1つ以上選択してください。")
 
+    # 🔽 ここがフォーム専用のバリデーションエラー処理！！
     if errors:
-        return "<br>".join(errors), 400
-
+        return render_template(
+        "index.html",
+        errors=errors,
+        form_data=request.form,
+        form_type="logo_only"  # ←ここも忘れずに！
+    )
 
     body = f"""
 【基本情報】
@@ -185,13 +203,18 @@ def handle_card_form():
     # 共通（基本）情報
     basic_info = get_basic_info()
     if basic_info["error"]:
-        return "<br>".join(basic_info["messages"]), 400
+        return render_template(
+        "index.html",
+        errors=basic_info["messages"],
+        form_data=basic_info["form_data"],  # ★フォーム値も戻す
+        form_type="card_only"
+    )
     # 単一入力・テキスト
     card_name = safe_get_form("card_name")
     orientation = safe_get_form("card_orientation")
     logo_exist = safe_get_form("logo_exist")
-    keywords = safe_get_form_list("keywords")
-    colors = safe_get_form_list("logo_colors")
+    keywords = safe_get_form_list("card_keywords")
+    colors = safe_get_form_list("card_colors")
     font = safe_get_form("font")
     furigana = safe_get_form("card_furigana")
     romaji = safe_get_form("card_romaji")
@@ -240,8 +263,16 @@ def handle_card_form():
     if not font:
         errors.append("ご希望のイメージフォントを選択してください。")
 
+    
+    # 🔽 ここがフォーム専用のバリデーションエラー処理！！
     if errors:
-        return "<br>".join(errors), 400
+        return render_template(
+        "index.html",
+        errors=errors,
+        form_data=request.form,
+        form_type="card_only"  # ←ここも忘れずに！
+    )
+
 
 
     # ✅ ここからメール本文・送信までが関数の「内側」にいる！
@@ -261,7 +292,7 @@ def handle_card_form():
 ■ ローマ字：{romaji}
 ■ 住所・メール・SNS等：{phone}
 ■ ご住所など：{address}
-■ 会社名：{company}
+■ 名刺用会社名：{company}
 ■ デザインキーワード：{', '.join(keywords)}（補足：{keywords_note}）
 ■ イメージカラー：{', '.join(colors)}（補足：{colors_note}）
 ■ ご希望フォント：{font}
@@ -296,8 +327,12 @@ def handle_logo_card_form():
     # 共通（基本）情報
     basic_info = get_basic_info()
     if basic_info["error"]:
-        return "<br>".join(basic_info["messages"]), 400
-
+        return render_template(
+        "index.html",
+        errors=basic_info["messages"],
+        form_data=basic_info["form_data"],  # ★フォーム値も戻す
+        form_type="logo_and_card"
+    )
     # 必須項目
     target = safe_get_form("target_audience")
     age_group = safe_get_form("target_age_group")
@@ -336,8 +371,15 @@ def handle_logo_card_form():
     if not font:
         errors.append("ご希望のフォントは必須です。")
 
+    # 🔽 ここがフォーム専用のバリデーションエラー処理！！
     if errors:
-        return "<br>".join(errors), 400
+        return render_template(
+        "index.html",
+        errors=errors,
+        form_data=request.form,
+        form_type="logo_and_card"  # ←ここも忘れずに！
+    )
+
 
     # 任意・補足項目
     motif = safe_get_form("logo_motif")
