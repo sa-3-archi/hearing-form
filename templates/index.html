@@ -838,36 +838,18 @@
 <div class="form-group">
   <label class="section-title">● ロゴの使用用途を教えてください（複数可）<span class="required">※</span></label>
   <div class="logo-usage">
-    <label><input name="usage" type="checkbox" value="Webサイト"
-      {% if form_data.get("usage") and "Webサイト" in form_data.get("usage") %}checked{% endif %}>
-      Webサイト</label>
-
-    <label><input name="usage" type="checkbox" value="紙媒体"
-      {% if form_data.get("usage") and "紙媒体" in form_data.get("usage") %}checked{% endif %}>
-      名刺・封筒などの紙媒体</label>
-
-    <label><input name="usage" type="checkbox" value="SNSアイコン"
-      {% if form_data.get("usage") and "SNSアイコン" in form_data.get("usage") %}checked{% endif %}>
-      SNSアイコン</label>
-
-    <label><input name="usage" type="checkbox" value="看板・サイン"
-      {% if form_data.get("usage") and "看板・サイン" in form_data.get("usage") %}checked{% endif %}>
-      看板・サイン</label>
-
-    <label><input name="usage" type="checkbox" value="パッケージ"
-      {% if form_data.get("usage") and "パッケージ" in form_data.get("usage") %}checked{% endif %}>
-      グッズやパッケージ</label>
-
-    <label><input name="usage" type="checkbox" value="その他"
-      {% if form_data.get("usage") and "その他" in form_data.get("usage") %}checked{% endif %}>
-      その他（テキスト入力）</label>
+    <label><input name="usage" type="checkbox" value="Webサイト" {% if 'Webサイト' in form_data.getlist('usage') %}checked{% endif %}>Webサイト</label>
+    <label><input name="usage" type="checkbox" value="紙媒体" {% if '紙媒体' in form_data.getlist('usage') %}checked{% endif %}>名刺・封筒などの紙媒体</label>
+    <label><input name="usage" type="checkbox" value="SNSアイコン" {% if 'SNSアイコン' in form_data.getlist('usage') %}checked{% endif %}>SNSアイコン</label>
+    <label><input name="usage" type="checkbox" value="看板・サイン" {% if '看板・サイン' in form_data.getlist('usage') %}checked{% endif %}>看板・サイン</label>
+    <label><input name="usage" type="checkbox" value="パッケージ" {% if 'パッケージ' in form_data.getlist('usage') %}checked{% endif %}>グッズやパッケージ</label>
+    <label><input name="usage" type="checkbox" value="その他" {% if 'その他' in form_data.getlist('usage') %}checked{% endif %}>その他（テキスト入力）</label>
   </div>
 
   {% if errors and "使用用途は1つ以上選択してください。" in errors %}
     <p class="error-text">ここを選択してください</p>
   {% endif %}
 </div>
-
 
             
 <div class="form-group">
@@ -1216,6 +1198,14 @@
 </body>
 
 <script>
+   // ⭐️ ここに追加してね！
+   function disableFormElements(form, disable = true) {
+    const elements = form.querySelectorAll("input, select, textarea");
+    elements.forEach(el => {
+      el.disabled = disable;
+    });
+  }
+  
   function setFormTypeAndSubmit(type) {
     const formTypeInput = document.getElementById("form_type");
     if (formTypeInput) {
@@ -1293,38 +1283,33 @@
       });
     }
 
-    if (nextBtn && logoForm && cardForm && logoCardForm && basicInfoForm) {
-      logoForm.style.display = "none";
-      cardForm.style.display = "none";
-      logoCardForm.style.display = "none";
+    nextBtn.addEventListener("click", function () {
+  const selected = document.querySelector('input[name="item_choice"]:checked');
 
-      nextBtn.addEventListener("click", function () {
-        const selected = document.querySelector('input[name="item_choice"]:checked');
+  // 全部非表示＆無効化
+  [logoForm, cardForm, logoCardForm].forEach(form => {
+    form.style.display = "none";
+    disableFormElements(form, true);
+  });
 
-        // フォーム切り替え
-        basicInfoForm.style.display = "none";
-        basicInfoForm.style.height = "0";
-        basicInfoForm.style.margin = "0";
-        basicInfoForm.style.padding = "0";
-        document.querySelector(".hearing-form").style.display = "none";
+  if (selected) {
+    const formType = selected.value;
 
-        logoForm.style.display = "none";
-        cardForm.style.display = "none";
-        logoCardForm.style.display = "none";
+    if (formType === "logo") {
+      logoForm.style.display = "block";
+      disableFormElements(logoForm, false);
+    } else if (formType === "business_card") {
+      cardForm.style.display = "block";
+      disableFormElements(cardForm, false);
+    } else if (formType === "both") {
+      logoCardForm.style.display = "block";
+      disableFormElements(logoCardForm, false);
+    }
+  } else {
+    alert("アイテムを選択してください！");
+  }
+});
 
-        if (selected) {
-          const formType = selected.value;
-          if (formType === "logo") {
-            logoForm.style.display = "block";
-          } else if (formType === "business_card") {
-            cardForm.style.display = "block";
-          } else if (formType === "both") {
-            logoCardForm.style.display = "block";
-          }
-        } else {
-          alert("アイテムを選択してください！");
-        }
-      });
 
       document.querySelectorAll(".back-button").forEach(btn => {
         btn.addEventListener("click", function () {
@@ -1332,23 +1317,16 @@
           cardForm.style.display = "none";
           logoCardForm.style.display = "none";
 
-          basicInfoForm.style.display = "block";
-          basicInfoForm.style.height = "auto";
-          basicInfoForm.style.margin = "";
-          basicInfoForm.style.padding = "";
-          basicInfoForm.style.overflow = "";
-          basicInfoForm.style.border = "";
-          basicInfoForm.style.boxShadow = "";
+          basicInfoForm.removeAttribute("style");
 
-          const hearingForm = document.querySelector(".hearing-form");
-          hearingForm.style.display = "block";
-          hearingForm.style.padding = "2rem";
-        });
+         // 🔁 hearing-form も戻す
+    const hearingForm = document.querySelector(".hearing-form");
+    hearingForm.style.display = "block";
+    hearingForm.style.padding = "2rem";  // ← これも元々のCSSで指定してるならなくてもOKやで
       });
-    }
-  });
+    }); // ←ここでもう一つ閉じる
+}); // ←★最後にこの document.addEventListener を閉じる
 </script>
-
 
 
 
