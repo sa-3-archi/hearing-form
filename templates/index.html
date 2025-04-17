@@ -1300,8 +1300,17 @@
     }
 
     nextBtn.addEventListener("click", function () {
-  const selected = document.querySelector('input[name="item_choice"]:checked');
+  // 🔍 ここを追加！
+  const requiredFields = basicInfoForm.querySelectorAll("[required]");
+  for (let field of requiredFields) {
+    if (!field.value.trim()) {
+      alert("すべての必須項目を入力してください！");
+      field.focus();
+      return;  // 未入力があったら止める！
+    }
+  }
 
+  const selected = document.querySelector('input[name="item_choice"]:checked');
   // 全部非表示＆無効化
   [logoForm, cardForm, logoCardForm].forEach(form => {
     form.style.display = "none";
